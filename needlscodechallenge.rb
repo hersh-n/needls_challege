@@ -1,12 +1,5 @@
 def sort(arr_to_sort, hardstart = nil, hardstop = nil)
 	sorted_arr = arr_to_sort.sort_by { |hash| hash['date'] }
-	if hardstart
-		sorted_arr.each do |hash|
-			if hash['date'] < hardstart
-				sorted_arr.delete(hash)
-			end
-		end
-	end
 	if hardstop
 		sorted_arr.each do |hash|
 			if hash['date'] > hardstop
@@ -21,11 +14,21 @@ def running_time (sorted_arr, hardstart = nil, hardstop = nil)
 	total_time = 0
 
 	if hardstart
-		if sorted_arr != []
-		if hardstart > sorted_arr.last['date'] && sorted_arr.last['newState'] == 'Settings::CAMPAIGN_STATUS_RUNNING'
-			total_time += Time.now.to_i - hardstart
+		if hardstart > sorted_arr.last['date']
+			if sorted_arr.last['newState'] == 'Settings::CAMPAIGN_STATUS_RUNNING'
+				total_time += Time.now.to_i - hardstart
+				return total_time
+			else
+				total_time = 0
+				return total_time
+			end
 		end
-	end
+			sorted_arr.each do |hash|
+				if hash['date'] < hardstart
+					sorted_arr.delete(hash)
+				end
+			end
+			puts sorted_arr
 	end
 
 	if hardstop
@@ -45,6 +48,10 @@ def running_time (sorted_arr, hardstart = nil, hardstop = nil)
 	end
   return total_time
 end
+
+
+
+
 
 
 
