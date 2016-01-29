@@ -1,6 +1,3 @@
-
-
-
 def sort(arr_to_sort, hardstart = nil, hardstop = nil)
 	sorted_arr = arr_to_sort.sort_by { |hash| hash['date'] }
 	if hardstart
@@ -24,7 +21,11 @@ def running_time (sorted_arr, hardstart = nil, hardstop = nil)
 	total_time = 0
 
 	if hardstart
-		total_time += sorted_arr.first['date'] - hardstart
+		if sorted_arr != []
+		if hardstart > sorted_arr.last['date'] && sorted_arr.last['newState'] == 'Settings::CAMPAIGN_STATUS_RUNNING'
+			total_time += Time.now.to_i - hardstart
+		end
+	end
 	end
 
 	if hardstop
@@ -45,7 +46,6 @@ def running_time (sorted_arr, hardstart = nil, hardstop = nil)
   return total_time
 end
 
-puts running_time((sort(statusLog10,nil,(Time.new(2015,10,15)).to_i)),nil,(Time.new(2015,10,15)).to_i)
 
 
 
