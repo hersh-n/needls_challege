@@ -45,68 +45,6 @@ def running_time (sorted_arr, hardstart = nil, hardstop = nil)
   return total_time
 end
 
-statusLog2 = [
-	{
-		'date' => (Time.new(2015,10,13)).to_i,
-		'oldState' => nil,
-		'newState' => 'Settings::CAMPAIGN_STATUS_PAUSED'
-	},
-	{
-		'date' => (Time.new(2015,10,14)).to_i,
-		'oldState' => 'Settings::CAMPAIGN_STATUS_PAUSED',
-		'newState' => 'Settings::CAMPAIGN_STATUS_RUNNING'
-	},
-	{
-		'date' => (Time.new(2015,10,15)).to_i,
-		'oldState' => 'Settings::CAMPAIGN_STATUS_RUNNING',
-		'newState' => 'Settings::CAMPAIGN_STATUS_COMPLETE'
-	}
-]
-
-
-statusLog10 = [
-	{
-		'date' => (Time.new(2015,10,13)).to_i,
-		'oldState' => nil,
-		'newState' => 'Settings::CAMPAIGN_STATUS_PAUSED'
-	},
-	{
-		'date' => (Time.new(2015,10,14)).to_i,
-		'oldState' => 'Settings::CAMPAIGN_STATUS_PAUSED',
-		'newState' => 'Settings::CAMPAIGN_STATUS_RUNNING'
-	}
-]
-
-# StartDate: nil
-# StopDate: (Time.new(2015,10,15)).to_i
-# Answer: 24 * 60 * 60;
-
-
-
-
-
-statusLog = [{
-		'date' => (Time.now).to_i,
-		'oldState' => nil,
-		'newState' => 'CAMPAIGN_STATUS_PAUSED'
-	},
-	{
-		'date' => (Time.now + (1*7*24*60*60)).to_i,
-		'oldState' => 'CAMPAIGN_STATUS_PAUSED',
-		'newState' => 'CAMPAIGN_STATUS_RUNNING'
-	},
-	{
-		'date' => (Time.now + (5*7*24*60*60)).to_i,
-		'oldState' => 'CAMPAIGN_STATUS_RUNNING',
-		'newState' => 'CAMPAIGN_STATUS_PAUSED'
-	},
-	{
-		'date' => (Time.now + (3*7*24*60*60)).to_i,
-		'oldState' => 'CAMPAIGN_STATUS_PAUSED',
-		'newState' => 'CAMPAIGN_STATUS_RUNNING'
-	}
-]
-
 puts running_time((sort(statusLog10,nil,(Time.new(2015,10,15)).to_i)),nil,(Time.new(2015,10,15)).to_i)
 
 
