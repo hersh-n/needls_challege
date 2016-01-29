@@ -37,7 +37,7 @@ def running_time (sorted_arr, hardstart = nil, hardstop = nil)
 		if hash['newState'] == 'Settings::CAMPAIGN_STATUS_RUNNING'
       if index != sorted_arr.length - 1
 				total_time += sorted_arr[index+1]['date'] - hash['date']
-      else
+      elsif hardstop == nil
         total_time += Time.now.to_i - hash['date']
       end
 		end
