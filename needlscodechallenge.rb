@@ -1,11 +1,7 @@
 def sort(arr_to_sort, hardstart = nil, hardstop = nil)
 	sorted_arr = arr_to_sort.sort_by { |hash| hash['date'] }
 	if hardstop
-		sorted_arr.each do |hash|
-			if hash['date'] > hardstop
-				sorted_arr.delete(hash)
-			end
-		end
+		sorted_arr.delete_if {|hash| hash['date'] > hardstop }
 	end
 	return sorted_arr
 end
@@ -23,12 +19,7 @@ def running_time (sorted_arr, hardstart = nil, hardstop = nil)
 				return total_time
 			end
 		end
-			sorted_arr.each do |hash|
-				if hash['date'] < hardstart
-					sorted_arr.delete(hash)
-				end
-			end
-			puts sorted_arr
+			sorted_arr.delete_if {|hash| hash['date'] < hardstart }
 	end
 
 	if hardstop
