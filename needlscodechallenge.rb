@@ -8,7 +8,6 @@ end
 
 def running_time (sorted_arr, hardstart = nil, hardstop = nil)
 	total_time = 0
-
 	if hardstart
 		if hardstart > sorted_arr.last['date']
 			if sorted_arr.last['newState'] == 'Settings::CAMPAIGN_STATUS_RUNNING'
